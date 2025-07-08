@@ -1,16 +1,14 @@
 // 첫번째 풀이, 틀림
 var hasCycle = function (head) {
-  const nextNode = new Map();
+  const num = new Map();
   let result = false;
 
-  while (true) {
-    if (!head || !head.next) break;
-
-    if (nextNode.get(head.next.val) === head.val) {
+  while (head) {
+    if (num.has(head.val)) {
       result = true;
       break;
     } else {
-      nextNode.set(head.next.val, head.val);
+      num.set(head.val, true);
     }
 
     head = head.next;
